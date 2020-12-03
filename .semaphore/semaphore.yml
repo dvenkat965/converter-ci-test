@@ -26,36 +26,10 @@ blocks:
           - sem-version node 12
           - cache restore
       jobs:
-        - name: Mocha
+        - name: Standalone Converter
+          commands:
+            - npm test -- test/converter.js
+        - name: Server Test
           commands:
             - node app/server.js &
             - npm test
-  - name: Test Standalone
-    task:
-      prologue:
-        commands:
-          - checkout
-          - sem-version node 12
-          - cache restore
-      jobs:
-        - name: Simple Converter
-          commands:
-            - npm test -- test/converter.js
-      env_vars:
-        - name: NODE_ENV
-          value: test
-  - name: Test Server
-    task:
-      env_vars:
-        - name: NODE_ENV
-          value: test
-      prologue:
-        commands:
-          - checkout
-          - sem-version node 12
-          - cache restore
-      jobs:
-        - name: Mocha server test
-          commands:
-            - node app/server.js &
-            - npm test -- test/server.js
