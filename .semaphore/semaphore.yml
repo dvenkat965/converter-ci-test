@@ -32,4 +32,4 @@ blocks:
         - name: Server Test
           commands:
             - node app/server.js &
-            - npm test
+            - npm test -- test/server.js
