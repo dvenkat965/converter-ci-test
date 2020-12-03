@@ -41,6 +41,9 @@ blocks:
         - name: Simple Converter
           commands:
             - npm test -- test/converter.js
+      env_vars:
+        - name: NODE_ENV
+          value: test
   - name: Test Server
     task:
       env_vars:
